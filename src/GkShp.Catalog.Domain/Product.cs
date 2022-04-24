@@ -18,11 +18,13 @@ namespace GkShp.Catalog.Domain
         public string Image { get; private set; }
         public int StockQuantity { get; private set; }
 
+        public Dimension Dimension { get; private set; }
+
         public Category Category { get; private set; }
 
         protected Product() { }
 
-        public Product(Guid categoryId, string name, string description, bool active, decimal value, DateTime recordDate, string image, int stockQuantity)
+        public Product(Guid categoryId, string name, string description, bool active, decimal value, DateTime recordDate, string image, int stockQuantity, Dimension dimension)
         {
             CategoryId = categoryId;
             Name = name;
@@ -32,6 +34,8 @@ namespace GkShp.Catalog.Domain
             RecordDate = recordDate;
             Image = image;
             StockQuantity = stockQuantity;
+            Dimension = dimension;
+
             Validate();
         }
 
