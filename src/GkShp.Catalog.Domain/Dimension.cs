@@ -15,9 +15,9 @@ namespace GkShp.Catalog.Domain
 
         public Dimension(decimal height, decimal width, decimal depth)
         {
-            Validations.ValidateIfLessThan(height, 1, "The field Height can't be less or equal to 0 ");
-            Validations.ValidateIfLessThan(width, 1, "The field Width can't be less or equal to 0 ");
-            Validations.ValidateIfLessThan(depth, 1, "The field Depth can't be less or equal to 0 ");
+            Validations.ValidateIfLessThan(height, 1, "The field Height can't be less or equal than 0");
+            Validations.ValidateIfLessThan(width, 1, "The field Width can't be less or equal than 0");
+            Validations.ValidateIfLessThan(depth, 1, "The field Depth can't be less or equal than 0");
             Height = height;
             Width = width;
             Depth = depth;

@@ -24,7 +24,7 @@ namespace GkShp.Catalog.Domain
 
         protected Product() { }
 
-        public Product(Guid categoryId, string name, string description, bool active, decimal value, DateTime recordDate, string image, int stockQuantity, Dimension dimension)
+        public Product(string name, string description, bool active, decimal value, Guid categoryId, DateTime recordDate, string image, Dimension dimension)
         {
             CategoryId = categoryId;
             Name = name;
@@ -33,7 +33,6 @@ namespace GkShp.Catalog.Domain
             Value = value;
             RecordDate = recordDate;
             Image = image;
-            StockQuantity = stockQuantity;
             Dimension = dimension;
 
             Validate();
@@ -78,9 +77,9 @@ namespace GkShp.Catalog.Domain
         {
             Validations.ValidateIfEmpty(Name, "The field Name of product can't be empty");
             Validations.ValidateIfEmpty(Description, "The field Description of product can't be empty");
-            Validations.ValidateIfEqual(CategoryId, Guid.Empty, "The field Value can't be empty");
-            Validations.ValidateIfLessThan(Value, 1, "The field Value of the product can't be less or equal than 0");
-            Validations.ValidateIfEmpty(Image, "The field image of product can't be empty");
+            Validations.ValidateIfEqual(CategoryId, Guid.Empty, "The field CategoryId of product can't be empty");
+            Validations.ValidateIfLessThan(Value, 1, "The field Value of product can't be less or equal than 0");
+            Validations.ValidateIfEmpty(Image, "The field Image of product can't be empty");
         }
     }
 }
