@@ -16,7 +16,7 @@ namespace GkShp.Catalog.Data.Mappings
 
             builder.HasMany(c => c.Products)
                 .WithOne(c => c.Category)
-                .HasForeignKey(c => c.CategoryId)
+                .HasForeignKey(c => c.CategoryId);
 
             builder.ToTable("Categories");
         }
