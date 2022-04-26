@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GkShp.Catalog.Domain.Events;
+using GkShp.Core.Bus;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +11,12 @@ namespace GkShp.Catalog.Domain
     public class StockService : IStockService
     {
         private readonly IProductRepository _productRepository;
+        private readonly IMediatorHandler _bus;
 
-        public StockService(IProductRepository productRepository)
+        public StockService(IProductRepository productRepository, IMediatorHandler bus)
         {
             _productRepository = productRepository;
+            _bus = bus;
         }
 
         public async Task<bool> DebitStock(Guid productId, int quantity)
@@ -24,6 +28,11 @@ namespace GkShp.Catalog.Domain
             if (!product.HaveStock(quantity)) return false;
 
             product.DebitStock(quantity);
+
+            if (product.StockQuantity < 10)
+            {
+                await _bus.PublishEvent(new ProductLowStockEvent(product.Id, product.StockQuantity));
+            }
 
             _productRepository.Update(product);
 
