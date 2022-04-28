@@ -22,6 +22,7 @@
     <ProjectReference Include="..\GkShp.Catalog.Data\GkShp.Catalog.Data.csproj" />
     <ProjectReference Include="..\GkShp.Catalog.Domain\GkShp.Catalog.Domain.csproj" />
     <ProjectReference Include="..\GkShp.Core\GkShp.Core.csproj" />
+    <ProjectReference Include="..\GkShp.Sales.Application\GkShp.Sales.Application.csproj" />
   </ItemGroup>
 
 </Project>
