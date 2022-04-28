@@ -4,7 +4,7 @@ namespace GkShp.Sales.Domain
 {
     public class Voucher : Entity
     {
-        public string Code { get; private set; }
+        public string Code { get; private set; } = string.Empty;
         public decimal? Percentual { get; private set; }
         public decimal? DiscountValue { get; private set; }
         public int Quantity { get; private set; }
@@ -16,7 +16,7 @@ namespace GkShp.Sales.Domain
         public bool Used { get; private set; }
 
         //EF. Rel.
-        public ICollection<Order> Order { get; private set; }
+        public ICollection<Order> Order { get; private set; } = new List<Order>();
 
     }
 }

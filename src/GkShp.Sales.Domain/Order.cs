@@ -6,7 +6,7 @@ namespace GkShp.Sales.Domain
     {
         public int Code { get; private set; }
         public Guid ClientId { get; private set; }
-        public Guid? VoucherId { get; private set; }
+        public Guid? VoucherId { get; private set; } = Guid.Empty;
         public bool UsedVoucher { get; private set; }
         public decimal Discount { get; private set; }
         public decimal TotalValue { get; private set; }
@@ -17,7 +17,7 @@ namespace GkShp.Sales.Domain
         public IReadOnlyCollection<OrderItem> OrderItems => _orderItems;
 
         //EF Relationship
-        public virtual Voucher Voucher { get; private set; }
+        public virtual Voucher Voucher { get; private set; } = null!;
 
         public Order(Guid clientId, bool usedVoucher, decimal discount, decimal totalValue)
         {
